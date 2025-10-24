@@ -1,7 +1,12 @@
+
+/*سعيد محمد الغامدي: 446103592
+هشام سعيد العيسى: 446100805
+محمد سليمان الناصر: 446101002
+*/
 import java.util.Scanner;
 
 public class LibrarySimulator {
-	
+
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
@@ -9,27 +14,28 @@ public class LibrarySimulator {
 		int totalBorrowings = 0;
 		int totalReturns = 0;
 		double totalRevenue = 0;
-		
+
 		while (running00 == true) {
-		System.out.println("WELCOME TO THE BOOK RENTAL SYSTEM");
-		System.out.println("Please select an option:\n" + "1-Login as User\n" + "2-Login as Administrator\n"
-				+ "3-Exit the Program");
-		int choice = input.nextInt();
-		
+			System.out.println("WELCOME TO THE BOOK RENTAL SYSTEM");
+			System.out.println("Please select an option:\n" + "1-Login as User\n" + "2-Login as Administrator\n"
+					+ "3-Exit the Program");
+			int choice = input.nextInt();
+
 			switch (choice) {
 			// User Selection
-			case 1:{
-			
+			case 1: {
+
 				int action;
 				int borrowedBooks = 0;
 				int returnedBooks = 0;
 				double debt = 0;
 				boolean running01 = true;
-				
-				System.out.println("Select a User:\n" + "1-Login as Hisham: 44*******\n" + "2-Login as Mohammed: 44*******\n"
-								+ "3-Login as Saeed: 44*******\n" + "4-Return to the Main Menu");
+
+				System.out.println(
+						"Select a User:\n" + "1-Login as Hisham: 446100805\n" + "2-Login as Mohammed: 446101002\n"
+								+ "3-Login as Saeed: 446103592\n" + "4-Return to the Main Menu");
 				int userName = input.nextInt();
-				
+
 				switch (userName) {
 				case 1: // FOR THE USER HISHAM
 
@@ -75,7 +81,7 @@ public class LibrarySimulator {
 					}
 					break;
 
-				case 2: // FOR THE USER MUHAMMED
+				case 2: // FOR THE USER MOHAMMED
 					while (running01 == true) {
 						System.out.println("Select an Option:");
 						System.out.println(
@@ -166,46 +172,60 @@ public class LibrarySimulator {
 
 					break;
 
+				// FOR INVALID SELECTIONS
 				default:
 					System.out.println("Invalid selection.");
 					break;
-					}
-						} break;
-				// Login as admin
+				}
+			}
+				break;
+			// Login as admin
 			case 2:
 				boolean running02 = true;
 				while (running02 == true) {
 
-				System.out.println("Select an Option: ");
-				System.out.println("1-View Total Revenue\n2-Most Frequent Operation\n3-Exit to Main Menu");
-				int choice02 = input.nextInt();
-				
-				switch (choice02) {
-				case 1:
-					System.out.printf("Total Revenue: %.2f\n",totalRevenue);
+					System.out.println("Select an Option: ");
+					System.out.println("1-View Total Revenue\n2-Most Frequent Operation\n3-Exit to Main Menu");
+					int choice02 = input.nextInt();
 
-					break;
-				case 2:
+					switch (choice02) {
+					// FOR "View Total Revenue"
+					case 1:
+						System.out.printf("Total Revenue: %.2f\n", totalRevenue);
 
-					break;
-				case 3:
-					running02 = false;
+						break;
+					// FOR "Most Frequent Operation"
+					case 2:
+						if (totalBorrowings > totalReturns) {
+							System.out.printf("The Most Frequent Operation is Borrowing: %d Operations.\n",
+									totalBorrowings);
+						} else if (totalBorrowings < totalReturns) {
+							System.out.printf("The Most Frequent Operation is Return: %d Operations.\n", totalReturns);
+						} else
+							System.out.printf("Borrowing and Return Are Equal, %d Operations for Each.\n",
+									totalBorrowings);
+						break;
+					// FOR "Return to the Main Menu"
+					case 3:
+						running02 = false;
 
-					break;
-				default:
-					System.out.print("Invalid selection.");
-					break;
-				}
+						break;
+					// FOR INVALID SELECTIONS
+					default:
+						System.out.print("Invalid selection.");
+						break;
 					}
+				}
 				break;
 			// Exit Program
 			case 3:
 				running00 = false;
 				break;
+			// FOR INVALID SELECTIONS
 			default:
 				System.out.println("Invalid selection.");
 				break;
-				}
 			}
 		}
 	}
+}
