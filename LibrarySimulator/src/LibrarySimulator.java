@@ -1,32 +1,35 @@
 import java.util.Scanner;
 
 public class LibrarySimulator {
-
+	
 	public static void main(String[] args) {
-		
-		System.out.println("WELCOME TO THE BOOK RENTAL SYSTEM");
-		System.out.println("Please select an option:\n" + "1-Login as User\n" + "2-Login as Administrator\n"
-				+ "3-Exit the Program");
 
 		Scanner input = new Scanner(System.in);
-		int choice = input.nextInt();
 		boolean running00 = true;
 		int totalBorrowings = 0;
 		int totalReturns = 0;
-
+		double totalRevenue = 0;
+		
 		while (running00 == true) {
+		System.out.println("WELCOME TO THE BOOK RENTAL SYSTEM");
+		System.out.println("Please select an option:\n" + "1-Login as User\n" + "2-Login as Administrator\n"
+				+ "3-Exit the Program");
+		int choice = input.nextInt();
+		
 			switch (choice) {
 			// User Selection
-			case 1:
-				System.out.println("Select a User:\n" + "1-Login as Hisham: 44*******\n"
-						+ "2-Login as Mohammed: 44*******\n" + "3-Login as Saeed: 44*******");
-				int userName = input.nextInt();
+			case 1:{
+			
 				int action;
 				int borrowedBooks = 0;
 				int returnedBooks = 0;
 				double debt = 0;
 				boolean running01 = true;
-
+				
+				System.out.println("Select a User:\n" + "1-Login as Hisham: 44*******\n" + "2-Login as Mohammed: 44*******\n"
+								+ "3-Login as Saeed: 44*******\n" + "4-Return to the Main Menu");
+				int userName = input.nextInt();
+				
 				switch (userName) {
 				case 1: // FOR THE USER HISHAM
 
@@ -45,6 +48,7 @@ public class LibrarySimulator {
 								borrowedBooks++;
 								debt += 0.50;
 								totalBorrowings++;
+								totalRevenue += 0.50;
 							} else
 								System.out.println("You Can't Borrow More Than 5 Books.");
 							break;
@@ -87,6 +91,7 @@ public class LibrarySimulator {
 								borrowedBooks++;
 								debt += 0.50;
 								totalBorrowings++;
+								totalRevenue += 0.50;
 							} else
 								System.out.println("You Can't Borrow More Than 5 Books.");
 							break;
@@ -129,6 +134,7 @@ public class LibrarySimulator {
 								borrowedBooks++;
 								debt += 0.50;
 								totalBorrowings++;
+								totalRevenue += 0.50;
 							} else
 								System.out.println("You Can't Borrow More Than 5 Books.");
 							break;
@@ -155,23 +161,51 @@ public class LibrarySimulator {
 					}
 					break;
 
+				case 4: // FOR "Return to the Main Menu"
+					running01 = false;
+
+					break;
+
+				default:
+					System.out.println("Invalid selection.");
+					break;
+					}
+						} break;
+				// Login as admin
+			case 2:
+				boolean running02 = true;
+				while (running02 == true) {
+
+				System.out.println("Select an Option: ");
+				System.out.println("1-View Total Revenue\n2-Most Frequent Operation\n3-Exit to Main Menu");
+				int choice02 = input.nextInt();
+				
+				switch (choice02) {
+				case 1:
+					System.out.printf("Total Revenue: %.2f\n",totalRevenue);
+
+					break;
+				case 2:
+
+					break;
+				case 3:
+					running02 = false;
+
+					break;
 				default:
 					System.out.print("Invalid selection.");
 					break;
 				}
-
-				// Login as admin
-			case 2:
-
+					}
 				break;
 			// Exit Program
 			case 3:
 				running00 = false;
 				break;
 			default:
-				System.out.print("Invalid selection.");
-
+				System.out.println("Invalid selection.");
+				break;
+				}
 			}
 		}
 	}
-}
