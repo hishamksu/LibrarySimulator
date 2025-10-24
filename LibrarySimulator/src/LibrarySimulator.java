@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class LibrarySimulator {
 
 	public static void main(String[] args) {
+		
 		System.out.println("WELCOME TO THE BOOK RENTAL SYSTEM");
 		System.out.println("Please select an option:\n" + "1-Login as User\n" + "2-Login as Administrator\n"
 				+ "3-Exit the Program");
@@ -172,7 +173,5 @@ public class LibrarySimulator {
 
 			}
 		}
-
 	}
-
 }
