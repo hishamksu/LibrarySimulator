@@ -17,6 +17,7 @@ public class LibrarySimulator {
 
 		while (running00 == true) {
 			System.out.println("WELCOME TO THE BOOK RENTAL SYSTEM");
+			System.out.println("_____________________________________");
 			System.out.println("Please select an option:\n" + "1-Login as User\n" + "2-Login as Administrator\n"
 					+ "3-Exit the Program");
 			int choice = input.nextInt();
@@ -38,7 +39,7 @@ public class LibrarySimulator {
 
 				switch (userName) {
 				case 1: // FOR THE USER HISHAM
-
+					System.out.println("Welcome Hisham!");
 					while (running01 == true) {
 						System.out.println("Select an Option:");
 						System.out.println(
@@ -60,6 +61,7 @@ public class LibrarySimulator {
 							break;
 						case 3:
 							if ((borrowedBooks - returnedBooks) > 0) {
+								borrowedBooks--;
 								returnedBooks++;
 								totalReturns++;
 							} else
@@ -82,6 +84,7 @@ public class LibrarySimulator {
 					break;
 
 				case 2: // FOR THE USER MOHAMMED
+					System.out.println("Welcome Mohammed!");
 					while (running01 == true) {
 						System.out.println("Select an Option:");
 						System.out.println(
@@ -98,13 +101,16 @@ public class LibrarySimulator {
 								debt += 0.50;
 								totalBorrowings++;
 								totalRevenue += 0.50;
+								
 							} else
 								System.out.println("You Can't Borrow More Than 5 Books.");
 							break;
 						case 3:
 							if ((borrowedBooks - returnedBooks) > 0) {
+								borrowedBooks--;
 								returnedBooks++;
 								totalReturns++;
+							
 							} else
 								System.out.println("You Don't Have Any Books.");
 							break;
@@ -125,6 +131,7 @@ public class LibrarySimulator {
 					break;
 
 				case 3: // FOR THE USER SAEED
+					System.out.println("Welcome Saeed!");
 					while (running01 == true) {
 						System.out.println("Select an Option:");
 						System.out.println(
@@ -146,6 +153,7 @@ public class LibrarySimulator {
 							break;
 						case 3:
 							if ((borrowedBooks - returnedBooks) > 0) {
+								borrowedBooks--;
 								returnedBooks++;
 								totalReturns++;
 							} else
