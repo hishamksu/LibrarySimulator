@@ -40,13 +40,19 @@ public class LibrarySimulator {
 							System.out.printf("Currently Borrowed Books: %d\n\n", (borrowedBooks - returnedBooks));
 							break;
 						case 2:
-							borrowedBooks++;
-							debt += 0.50;
-							totalBorrowings++;
+							if (borrowedBooks < 5) {
+								borrowedBooks++;
+								debt += 0.50;
+								totalBorrowings++;
+							} else
+								System.out.println("You Can't Borrow More Than 5 Books.");
 							break;
 						case 3:
-							returnedBooks++;
-							totalReturns++;
+							if ((borrowedBooks - returnedBooks) > 0) {
+								returnedBooks++;
+								totalReturns++;
+							} else
+								System.out.println("You Don't Have Any Books.");
 							break;
 						case 4:
 							System.out.printf("Total Borrowed Books: %d\n", borrowedBooks);
@@ -76,13 +82,19 @@ public class LibrarySimulator {
 							System.out.printf("Currently Borrowed Books: %d\n\n", (borrowedBooks - returnedBooks));
 							break;
 						case 2:
-							borrowedBooks++;
-							debt += 0.50;
-							totalBorrowings++;
+							if (borrowedBooks < 5) {
+								borrowedBooks++;
+								debt += 0.50;
+								totalBorrowings++;
+							} else
+								System.out.println("You Can't Borrow More Than 5 Books.");
 							break;
 						case 3:
-							returnedBooks++;
-							totalReturns++;
+							if ((borrowedBooks - returnedBooks) > 0) {
+								returnedBooks++;
+								totalReturns++;
+							} else
+								System.out.println("You Don't Have Any Books.");
 							break;
 						case 4:
 							System.out.printf("Total Borrowed Books: %d\n", borrowedBooks);
@@ -112,13 +124,19 @@ public class LibrarySimulator {
 							System.out.printf("Currently Borrowed Books: %d\n\n", (borrowedBooks - returnedBooks));
 							break;
 						case 2:
-							borrowedBooks++;
-							debt += 0.50;
-							totalBorrowings++;
+							if (borrowedBooks < 5) {
+								borrowedBooks++;
+								debt += 0.50;
+								totalBorrowings++;
+							} else
+								System.out.println("You Can't Borrow More Than 5 Books.");
 							break;
 						case 3:
-							returnedBooks++;
-							totalReturns++;
+							if ((borrowedBooks - returnedBooks) > 0) {
+								returnedBooks++;
+								totalReturns++;
+							} else
+								System.out.println("You Don't Have Any Books.");
 							break;
 						case 4:
 							System.out.printf("Total Borrowed Books: %d\n", borrowedBooks);
