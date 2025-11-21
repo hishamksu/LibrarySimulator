@@ -1,3 +1,8 @@
+/*سعيد محمد الغامدي: 446103592
+هشام سعيد العيسى: 446100805
+محمد سليمان الناصر: 446101002
+https://github.com/hishamksu/LibrarySimulator.git
+*/
 
 public class Member {
 
