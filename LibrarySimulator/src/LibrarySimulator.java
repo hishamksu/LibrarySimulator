@@ -19,7 +19,7 @@ public class LibrarySimulator {
 		boolean running00 = true;
 
 		while (running00 == true) {
-
+			//reset each member's session statistics
 			hisham.reset();
 			mohammed.reset();
 			saeed.reset();
@@ -35,7 +35,7 @@ public class LibrarySimulator {
 			case 1:
 
 				int action;
-
+				// the object currentUser will store the active user
 				Member currentUser = null;
 
 				boolean running01 = true;
@@ -77,7 +77,7 @@ public class LibrarySimulator {
 					System.out.println(
 							"1- View Borrowed Books\n2- Borrow a Book (0.50 fee)\n3- Return a Book\n4- View Session Summary\n5- Exit to Main Menu");
 					action = input.nextInt();
-
+					//borrow and return books and showing statistics using methods in the class Member
 					switch (action) {
 					case 1:
 						currentUser.viewBorrowedCount();
