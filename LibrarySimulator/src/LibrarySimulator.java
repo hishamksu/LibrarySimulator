@@ -10,12 +10,19 @@ public class LibrarySimulator {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
+		
+		Member hisham = new Member(446100805, "Hisham", 0);
+		Member mohammed = new Member(446101002, "Mohammed", 0);
+		Member saeed = new Member(446103592, "Saeed", 0);
+		
 		boolean running00 = true;
-		int totalBorrowings = 0;
-		int totalReturns = 0;
-		double totalRevenue = 0;
-
+		
 		while (running00 == true) {
+			
+			hisham.reset();
+			mohammed.reset();
+			saeed.reset();
+
 			System.out.println("WELCOME TO THE BOOK RENTAL SYSTEM");
 			System.out.println("_____________________________________");
 			System.out.println("Please select an option:\n" + "1-Login as User\n" + "2-Login as Administrator\n"
@@ -23,13 +30,11 @@ public class LibrarySimulator {
 			int choice = input.nextInt();
 
 			switch (choice) {
-			// User Selection
+			
 			case 1: {
 
 				int action;
-				int borrowedBooks = 0;
-				int returnedBooks = 0;
-				double debt = 0;
+			
 				boolean running01 = true;
 
 				System.out.println(
@@ -48,30 +53,16 @@ public class LibrarySimulator {
 
 						switch (action) {
 						case 1:
-							System.out.printf("Currently Borrowed Books: %d\n\n", (borrowedBooks - returnedBooks));
+							hisham.viewBorrowedCount();
 							break;
 						case 2:
-							if (borrowedBooks < 5) {
-								borrowedBooks++;
-								debt += 0.50;
-								totalBorrowings++;
-								totalRevenue += 0.50;
-							} else
-								System.out.println("You Can't Borrow More Than 5 Books.");
+						hisham.borrowOne();
 							break;
 						case 3:
-							if ((borrowedBooks - returnedBooks) > 0) {
-								borrowedBooks--;
-								returnedBooks++;
-								totalReturns++;
-							} else
-								System.out.println("You Don't Have Any Books.");
+							hisham.returnOne();
 							break;
 						case 4:
-							System.out.printf("Total Borrowed Books: %d\n", borrowedBooks);
-							System.out.printf("Total Returned Books: %d\n", returnedBooks);
-							System.out.printf("Total Fees: %.2f\n\n", debt);
-
+							hisham.displayStatistics();
 							break;
 						case 5:
 							running01 = false;
@@ -93,32 +84,16 @@ public class LibrarySimulator {
 
 						switch (action) {
 						case 1:
-							System.out.printf("Currently Borrowed Books: %d\n\n", (borrowedBooks - returnedBooks));
+							mohammed.viewBorrowedCount();
 							break;
 						case 2:
-							if (borrowedBooks < 5) {
-								borrowedBooks++;
-								debt += 0.50;
-								totalBorrowings++;
-								totalRevenue += 0.50;
-								
-							} else
-								System.out.println("You Can't Borrow More Than 5 Books.");
+						mohammed.borrowOne();
 							break;
 						case 3:
-							if ((borrowedBooks - returnedBooks) > 0) {
-								borrowedBooks--;
-								returnedBooks++;
-								totalReturns++;
-							
-							} else
-								System.out.println("You Don't Have Any Books.");
+							mohammed.returnOne();
 							break;
 						case 4:
-							System.out.printf("Total Borrowed Books: %d\n", borrowedBooks);
-							System.out.printf("Total Returned Books: %d\n", returnedBooks);
-							System.out.printf("Total Fees: %.2f\n\n", debt);
-
+							mohammed.displayStatistics();
 							break;
 						case 5:
 							running01 = false;
@@ -126,6 +101,7 @@ public class LibrarySimulator {
 						default:
 							System.out.println("Invalid  Selection.\n");
 							break;
+						
 						}
 					}
 					break;
@@ -140,30 +116,16 @@ public class LibrarySimulator {
 
 						switch (action) {
 						case 1:
-							System.out.printf("Currently Borrowed Books: %d\n\n", (borrowedBooks - returnedBooks));
+							saeed.viewBorrowedCount();
 							break;
 						case 2:
-							if (borrowedBooks < 5) {
-								borrowedBooks++;
-								debt += 0.50;
-								totalBorrowings++;
-								totalRevenue += 0.50;
-							} else
-								System.out.println("You Can't Borrow More Than 5 Books.");
+							saeed.borrowOne();
 							break;
 						case 3:
-							if ((borrowedBooks - returnedBooks) > 0) {
-								borrowedBooks--;
-								returnedBooks++;
-								totalReturns++;
-							} else
-								System.out.println("You Don't Have Any Books.");
+							saeed.returnOne();
 							break;
 						case 4:
-							System.out.printf("Total Borrowed Books: %d\n", borrowedBooks);
-							System.out.printf("Total Returned Books: %d\n", returnedBooks);
-							System.out.printf("Total Fees: %.2f\n\n", debt);
-
+							saeed.displayStatistics();
 							break;
 						case 5:
 							running01 = false;
@@ -199,19 +161,17 @@ public class LibrarySimulator {
 					switch (choice02) {
 					// FOR "View Total Revenue"
 					case 1:
-						System.out.printf("Total Revenue: %.2f\n", totalRevenue);
+						System.out.printf("Total Revenue: %.2f\n", Member.TotalRevenue);
 
 						break;
 					// FOR "Most Frequent Operation"
 					case 2:
-						if (totalBorrowings > totalReturns) {
-							System.out.printf("The Most Frequent Operation is Borrowing: %d Operations.\n",
-									totalBorrowings);
-						} else if (totalBorrowings < totalReturns) {
-							System.out.printf("The Most Frequent Operation is Return: %d Operations.\n", totalReturns);
+						if (Member.TotalBorrows > Member.TotalReturns) {
+							System.out.printf("The Most Frequent Operation is Borrowing: %d Operations.\n",Member.TotalBorrows);
+						} else if (Member.TotalBorrows < Member.TotalReturns) {
+							System.out.printf("The Most Frequent Operation is Return: %d Operations.\n",Member.TotalReturns);
 						} else
-							System.out.printf("Borrowing and Return Are Equal, %d Operations for Each.\n",
-									totalBorrowings);
+							System.out.printf("Borrowing and Return Are Equal, %d Operations for Each.\n",Member.TotalBorrows);
 						break;
 					// FOR "Return to the Main Menu"
 					case 3:

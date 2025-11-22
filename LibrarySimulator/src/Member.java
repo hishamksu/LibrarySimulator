@@ -106,7 +106,7 @@ public class Member {
 
 		TotalRevenue +=.50;
 
-		System.out.printf("Book borrowed successfully. Fee:%2f\n",0.50);
+		System.out.printf("Book borrowed successfully. Fee:%.2f\n",0.50);
 
 		return true;
 
@@ -118,7 +118,7 @@ public class Member {
 
 	public boolean returnOne() {
 
-		if(canReturn()) {
+		if(!canReturn()) {
 
 			System.out.println("You have no books to return.");
 
@@ -142,17 +142,17 @@ public class Member {
 
 	//Display session statistics for this member
 
-	public void dislayStatistics() {
+	public void displayStatistics() {
 
-		System.out.println("======Session Sumary for" +name+ "ID: " +id+ ")======");
+		System.out.println("======Session Summary for "+name+", ID: "+id+"=======");
 
-		System.out.println("Books Borrowed (this session): " + numBorrows);
+		System.out.println("Books Borrowed (this session): "+ numBorrows);
 
-		System.out.println("Books Returnd (this session): " +numReturns);
+		System.out.println("Books Returnd (this session): "+ numReturns);
 
-		System.out.println("Times View Borrowed Count used(this sesssion): " +numViewBorrowed);
+		System.out.println("Times \"View Borrowed Count\" used (this sesssion): "+ numViewBorrowed);
 
-		System.out.printf("Fees inscrred (this session): %2f\n",sessionFees);
+		System.out.printf("Fees incurred (this session): %.2f\n\n",sessionFees);
 
 	}
 	
