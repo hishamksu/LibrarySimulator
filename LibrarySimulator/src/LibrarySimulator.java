@@ -2,6 +2,7 @@
 /*سعيد محمد الغامدي: 446103592
 هشام سعيد العيسى: 446100805
 محمد سليمان الناصر: 446101002
+https://github.com/hishamksu/LibrarySimulator.git
 */
 import java.util.Scanner;
 
@@ -10,15 +11,15 @@ public class LibrarySimulator {
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in);
-		
+
 		Member hisham = new Member(446100805, "Hisham", 0);
 		Member mohammed = new Member(446101002, "Mohammed", 0);
 		Member saeed = new Member(446103592, "Saeed", 0);
-		
+
 		boolean running00 = true;
-		
+
 		while (running00 == true) {
-			
+
 			hisham.reset();
 			mohammed.reset();
 			saeed.reset();
@@ -30,11 +31,13 @@ public class LibrarySimulator {
 			int choice = input.nextInt();
 
 			switch (choice) {
-			
-			case 1: {
+
+			case 1:
 
 				int action;
-			
+
+				Member currentUser = null;
+
 				boolean running01 = true;
 
 				System.out.println(
@@ -43,112 +46,61 @@ public class LibrarySimulator {
 				int userName = input.nextInt();
 
 				switch (userName) {
-				case 1: // FOR THE USER HISHAM
+				case 1:
+					currentUser = hisham;
 					System.out.println("Welcome Hisham!");
-					while (running01 == true) {
-						System.out.println("Select an Option:");
-						System.out.println(
-								"1- View Borrowed Books\n2- Borrow a Book (0.50 fee)\n3- Return a Book\n4- View Session Summary\n5- Exit to Main Menu");
-						action = input.nextInt();
-
-						switch (action) {
-						case 1:
-							hisham.viewBorrowedCount();
-							break;
-						case 2:
-						hisham.borrowOne();
-							break;
-						case 3:
-							hisham.returnOne();
-							break;
-						case 4:
-							hisham.displayStatistics();
-							break;
-						case 5:
-							running01 = false;
-							break;
-						default:
-							System.out.println("Invalid  Selection.\n");
-							break;
-						}
-					}
 					break;
 
-				case 2: // FOR THE USER MOHAMMED
+				case 2:
+					currentUser = mohammed;
 					System.out.println("Welcome Mohammed!");
-					while (running01 == true) {
-						System.out.println("Select an Option:");
-						System.out.println(
-								"1- View Borrowed Books\n2- Borrow a Book (0.50 fee)\n3- Return a Book\n4- View Session Summary\n5- Exit to Main Menu");
-						action = input.nextInt();
-
-						switch (action) {
-						case 1:
-							mohammed.viewBorrowedCount();
-							break;
-						case 2:
-						mohammed.borrowOne();
-							break;
-						case 3:
-							mohammed.returnOne();
-							break;
-						case 4:
-							mohammed.displayStatistics();
-							break;
-						case 5:
-							running01 = false;
-							break;
-						default:
-							System.out.println("Invalid  Selection.\n");
-							break;
-						
-						}
-					}
 					break;
 
-				case 3: // FOR THE USER SAEED
+				case 3:
+					currentUser = saeed;
 					System.out.println("Welcome Saeed!");
-					while (running01 == true) {
-						System.out.println("Select an Option:");
-						System.out.println(
-								"1- View Borrowed Books\n2- Borrow a Book (0.50 fee)\n3- Return a Book\n4- View Session Summary\n5- Exit to Main Menu");
-						action = input.nextInt();
-
-						switch (action) {
-						case 1:
-							saeed.viewBorrowedCount();
-							break;
-						case 2:
-							saeed.borrowOne();
-							break;
-						case 3:
-							saeed.returnOne();
-							break;
-						case 4:
-							saeed.displayStatistics();
-							break;
-						case 5:
-							running01 = false;
-							break;
-						default:
-							System.out.println("Invalid  Selection.\n");
-							break;
-						}
-					}
 					break;
 
 				case 4: // FOR "Return to the Main Menu"
 					running01 = false;
-
 					break;
 
 				// FOR INVALID SELECTIONS
 				default:
 					System.out.println("Invalid selection.");
+					running01 = false;
 					break;
 				}
-			}
+
+				while (running01 == true) {
+					System.out.println("Select an Option:");
+					System.out.println(
+							"1- View Borrowed Books\n2- Borrow a Book (0.50 fee)\n3- Return a Book\n4- View Session Summary\n5- Exit to Main Menu");
+					action = input.nextInt();
+
+					switch (action) {
+					case 1:
+						currentUser.viewBorrowedCount();
+						break;
+					case 2:
+						currentUser.borrowOne();
+						break;
+					case 3:
+						currentUser.returnOne();
+						break;
+					case 4:
+						currentUser.displayStatistics();
+						break;
+					case 5:
+						running01 = false;
+						break;
+					default:
+						System.out.println("Invalid  Selection.\n");
+						break;
+					}
+				}
 				break;
+
 			// Login as admin
 			case 2:
 				boolean running02 = true;
@@ -167,18 +119,20 @@ public class LibrarySimulator {
 					// FOR "Most Frequent Operation"
 					case 2:
 						if (Member.TotalBorrows > Member.TotalReturns) {
-							System.out.printf("The Most Frequent Operation is Borrowing: %d Operations.\n",Member.TotalBorrows);
+							System.out.printf("The Most Frequent Operation is Borrowing: %d Operations.\n",
+									Member.TotalBorrows);
 						} else if (Member.TotalBorrows < Member.TotalReturns) {
-							System.out.printf("The Most Frequent Operation is Return: %d Operations.\n",Member.TotalReturns);
+							System.out.printf("The Most Frequent Operation is Return: %d Operations.\n",
+									Member.TotalReturns);
 						} else
-							System.out.printf("Borrowing and Return Are Equal, %d Operations for Each.\n",Member.TotalBorrows);
+							System.out.printf("Borrowing and Return Are Equal, %d Operations for Each.\n",
+									Member.TotalBorrows);
 						break;
 					// FOR "Return to the Main Menu"
 					case 3:
 						running02 = false;
 
 						break;
-					// FOR INVALID SELECTIONS
 					default:
 						System.out.print("Invalid selection.");
 						break;
@@ -189,7 +143,6 @@ public class LibrarySimulator {
 			case 3:
 				running00 = false;
 				break;
-			// FOR INVALID SELECTIONS
 			default:
 				System.out.println("Invalid selection.");
 				break;
